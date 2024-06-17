@@ -25,3 +25,6 @@ Regular expression (regex) adalah alat yang kuat untuk validasi input. Dengan me
 ### Pola Regex Umum
 - **Karakter Alfanumerik**: `/^[a-zA-Z0-9]*$/`
 - **Validasi Email**: `/^[\w\.\-]+@[\w\-]+\.[a-zA-Z]{2,4}`
+
+## Untuk secara spesifik mencegah SQL Injection
+- Lakukan parameterize query untuk mencegah peretas memasukkan kata kunci eksploit yang dapat mempengaruhi query
