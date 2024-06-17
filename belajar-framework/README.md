@@ -1,68 +1,67 @@
-# CodeIgniter 4 Application Starter
+# Pengenalan Aplikasi CodeIgniter 4
 
-## What is CodeIgniter?
+## Apa itu CodeIgniter?
+CodeIgniter adalah kerangka kerja web PHP full-stack yang ringan, cepat, fleksibel, dan aman. Informasi lebih lanjut dapat ditemukan di situs resmi.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Repositori ini berisi starter aplikasi yang dapat diinstal menggunakan composer. Repositori ini dibangun dari repositori pengembangan.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Informasi lebih lanjut tentang rencana versi 4 dapat ditemukan di forum CodeIgniter 4. Anda dapat membaca panduan pengguna yang sesuai dengan versi terbaru dari kerangka kerja ini.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Instalasi & Pembaruan
+Gunakan perintah berikut untuk menginstal:
+```bash
+composer create-project codeigniter4/appstarter
+```
+dan gunakan perintah berikut untuk memperbarui setiap kali ada rilis baru:
+```bash
+composer update
+```
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
-
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Saat memperbarui, periksa catatan rilis untuk melihat apakah ada perubahan yang perlu Anda terapkan pada folder aplikasi Anda. File yang terpengaruh dapat disalin atau digabungkan dari `vendor/codeigniter4/framework/app`.
 
 ## Setup
+Salin file `.env` ke `.env` dan sesuaikan untuk aplikasi Anda, khususnya baseURL dan pengaturan database.
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+### Perubahan Penting pada `index.php`
+`index.php` tidak lagi berada di root proyek! File ini telah dipindahkan ke dalam folder `public`, untuk keamanan yang lebih baik dan pemisahan komponen.
 
-## Important Change with index.php
+Ini berarti Anda harus mengkonfigurasi server web Anda untuk "menunjuk" ke folder `public` dari proyek Anda, bukan ke root proyek. Praktik yang lebih baik adalah mengonfigurasi host virtual untuk menunjuk ke sana. Praktik yang buruk adalah menunjuk server web Anda ke root proyek dan mengharapkan untuk masuk ke `public/`, karena logika dan kerangka kerja lainnya akan terpapar.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Harap baca panduan pengguna untuk penjelasan yang lebih baik tentang cara kerja CI4!
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Manajemen Repositori
+Kami menggunakan masalah GitHub di repositori utama kami untuk melacak BUG dan melacak paket pekerjaan PENGEMBANGAN yang disetujui. Kami menggunakan forum kami untuk memberikan DUKUNGAN dan mendiskusikan PERMINTAAN FITUR.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Repositori ini adalah repositori "distribusi", dibangun oleh skrip persiapan rilis kami. Masalah dengan ini dapat diajukan di forum kami, atau sebagai masalah di repositori utama.
 
-## Repository Management
+## Persyaratan Server
+Diperlukan PHP versi 7.4 atau lebih tinggi, dengan ekstensi berikut terinstal:
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- `intl`
+- `mbstring`
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+### [!PERINGATAN]
+Tanggal akhir masa pakai PHP 7.4 adalah 28 November 2022. Tanggal akhir masa pakai PHP 8.0 adalah 26 November 2023. Jika Anda masih menggunakan PHP 7.4 atau 8.0, Anda harus segera memperbarui. Tanggal akhir masa pakai PHP 8.1 adalah 25 November 2024.
 
-## Server Requirements
+Selain itu, pastikan bahwa ekstensi berikut diaktifkan di PHP Anda:
 
-PHP version 7.4 or higher is required, with the following extensions installed:
+- `json` (diaktifkan secara default - jangan matikan)
+- `mysqlnd` jika Anda berencana menggunakan MySQL
+- `libcurl` jika Anda berencana menggunakan pustaka `HTTP\CURLRequest`
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+---
 
-> [!WARNING]
-> The end of life date for PHP 7.4 was November 28, 2022.
-> The end of life date for PHP 8.0 was November 26, 2023.
-> If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> The end of life date for PHP 8.1 will be November 25, 2024.
+### Dasar-dasar CodeIgniter 4
+CodeIgniter 4 dirancang untuk menjadi sederhana dan mudah dipelajari. Berikut adalah beberapa konsep dasar yang perlu Anda ketahui:
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+1. **Controller**: Komponen yang menangani logika aplikasi Anda. Controller menerima input dari pengguna, memprosesnya, dan mengirimkan respon.
+   
+2. **Model**: Komponen yang berhubungan dengan basis data. Model bertanggung jawab untuk mendapatkan, menyimpan, dan memanipulasi data.
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+3. **View**: Komponen yang menangani output. View adalah template yang menampilkan data kepada pengguna.
+
+4. **Routes**: Digunakan untuk menentukan bagaimana URL dalam aplikasi Anda dipetakan ke controller.
+
+5. **Helpers**: Kumpulan fungsi yang membantu Anda menyelesaikan tugas umum dalam aplikasi Anda, seperti bekerja dengan URL atau formulir.
+
+6. **Libraries**: Kumpulan kelas yang menyediakan fungsionalitas tambahan, seperti manipulasi gambar atau pembuatan file PDF.
