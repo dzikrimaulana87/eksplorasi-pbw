@@ -1,4 +1,3 @@
-```markdown
 # Dasar-dasar CSS
 
 Cascading Style Sheets (CSS) adalah bahasa stylesheet yang digunakan untuk mendesain tampilan dokumen yang ditulis dalam HTML. Berikut adalah penjelasan mengenai dasar-dasar CSS berdasarkan kode contoh yang diberikan.
